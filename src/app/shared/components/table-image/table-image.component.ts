@@ -8,7 +8,8 @@ import { imageInterface } from '../../interfaces/image.interface';
 })
 export class TableImageComponent {
   params: imageInterface;
+  url: string;
   agInit(params: any){
-    this.params = params.value;
+    this.url = params.value.url;
   }
 }

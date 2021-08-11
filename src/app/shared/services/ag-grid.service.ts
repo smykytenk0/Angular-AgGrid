@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { TableDataInterface } from '../../interfaces/TableData.interface';
+import { TableDataInterface } from '../interfaces/TableData.interface';
 
 @Injectable({providedIn: 'root'})
 export class AgGridService {
@@ -15,5 +15,5 @@ export class AgGridService {
       })
     }
     return rowData
-  }
+  };
 }

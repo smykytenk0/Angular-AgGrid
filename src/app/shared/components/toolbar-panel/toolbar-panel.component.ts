@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { StoreActions } from '../../../store/store.actions';
+import { columnDefsWithoutSelection, columnDefsWithSelection } from '../../constants/contextMenuItems.constants';
 
 @Component({
   selector: 'app-toolbar-panel',
@@ -8,14 +9,18 @@ import { StoreActions } from '../../../store/store.actions';
   styleUrls: ['./toolbar-panel.component.scss']
 })
 export class ToolbarPanelComponent {
+  selection: boolean = false;
+  contextMenuItems: object[] = columnDefsWithSelection;
 
   constructor(private store: Store) {
   }
-  selection: boolean = false;
-  agInit(){
+
+  agInit() {
   }
+
   toggleSelection() {
     this.selection = !this.selection;
-    this.store.dispatch(StoreActions.toggleSelection({isSelection: this.selection}))
+    this.contextMenuItems = (this.selection ? columnDefsWithSelection : columnDefsWithoutSelection);
+    this.store.dispatch(StoreActions.toggleSelection({isSelection: this.selection, contextMenuItems: this.contextMenuItems}))
   }
 }

@@ -1,3 +1,4 @@
 export interface StoreInterface{
-  isSelection: boolean
+  isSelection: boolean;
+  contextMenuItems: object[];
 }

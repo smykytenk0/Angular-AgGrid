@@ -1,48 +1,31 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Self } from '@angular/core';
 import { GridOptions } from 'ag-grid-community';
 import { agGridOptionsConfig } from './ag-grid-options-config';
 import { defaultData } from './defaultData';
-import { Store } from '@ngrx/store';
-import { AgGridService } from '../services/ag-grid.service';
+import { select, Store } from '@ngrx/store';
+import { AgGridService } from '../../services/ag-grid.service';
+import { Observable } from 'rxjs';
+import { contextMenuItemsSelector } from '../../../store/store.reducers';
 
 @Component({
   selector: 'app-ag-grid',
   templateUrl: './ag-grid.component.html',
-  styleUrls: ['./ag-grid.component.scss']
+  styleUrls: ['./ag-grid.component.scss'],
+  providers: [AgGridService]
 })
 export class AgGridComponent implements OnInit {
   gridOptions: GridOptions = agGridOptionsConfig;
-  isSelection: boolean = true;
+  @Input() isSelection: boolean = true;
   rowData: object[] = [];
   columnDefs: object[];
-  columnDefsWithSelection = [
-    {
-      headerName: '',
-      field: 'filterField',
-      headerCheckboxSelection: true,
-      headerCheckboxSelectionFilteredOnly: true,
-      checkboxSelection: true,
-
-    },
-    {headerName: '', field: 'image', cellRenderer: 'tableImageComponent',},
-    {headerName: 'Publish on', field: 'publishedAt'},
-    {headerName: 'Video Title', field: 'title', cellRenderer: 'tableTitleComponent'},
-    {headerName: 'Description', field: 'description'},
-  ];
-  columnDefsWithoutSelection = [
-    {headerName: '', field: 'image', cellRenderer: 'tableImageComponent',},
-    {headerName: 'Publish on', field: 'publishedAt'},
-    {headerName: 'Video Title', field: 'title', cellRenderer: 'tableTitleComponent'},
-    {headerName: 'Description', field: 'description'},
-  ];
-
+  columnDefs$: Observable<object[]>;
   constructor(private store: Store,
-              private agGridService: AgGridService) {
+              @Self() private agGridService: AgGridService) {
 
   }
 
   ngOnInit(): void {
-    this.columnDefs = (this.isSelection ? this.columnDefsWithSelection : this.columnDefsWithoutSelection);
+    this.columnDefs$ = this.store.pipe(select(contextMenuItemsSelector));
     this.rowData = this.agGridService.getDataForTable(defaultData.items);
   }
 

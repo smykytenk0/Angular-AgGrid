@@ -3,6 +3,6 @@
                  [gridOptions]="gridOptions"
                  [rowHeight]="200"
                  [rowData]="rowData"
-                 [columnDefs]="columnDefs"
+                 [columnDefs]="columnDefs$ | async"
                  [getContextMenuItems]="getContextMenuItems">
 </ag-grid-angular>
