@@ -6,3 +6,8 @@
 body{
   margin: 0;
 }
+
+.ag-theme-alpine .ag-checkbox-input-wrapper.ag-indeterminate::after{
+  content: "\f108";
+  color: var(--ag-checkbox-unchecked-color, #999);
+}
