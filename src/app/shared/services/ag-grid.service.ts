@@ -1,21 +1,14 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Store } from '@ngrx/store';
+import { select, Store } from '@ngrx/store';
 
 import { TableDataInterface } from '../interfaces/TableData.interface';
 import { StoreActions } from '../../store/store.actions';
-import { convertToTableData } from '../operators/convertToTableData';
+import { contextMenuItemsSelector } from '../../store/store.reducers';
 
 @Injectable({providedIn: 'root'})
 export class AgGridService {
 
-  constructor(private store: Store,
-              private http: HttpClient) {
-  }
-
-  getVideosData(){
-    return this.http.get('https://www.googleapis.com/youtube/v3/search?key=AIzaSyD0wvlxmokPdCjKWE6utYlGfQLQC39TBtw&maxResults=50&type=video&part=snippet&q=john')
-      .pipe(convertToTableData())
+  constructor(private store: Store) {
   }
 
   getDataForTable(data): TableDataInterface[] {
@@ -37,5 +30,9 @@ export class AgGridService {
       isSelection: isSelection,
       contextMenuItems: contextMenuItems
     }))
+  }
+
+  selectContextMenuItems(){
+    return this.store.pipe(select(contextMenuItemsSelector));
   }
 }

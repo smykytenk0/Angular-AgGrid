@@ -1,18 +1,17 @@
 import { Component, Input, OnInit, Self } from '@angular/core';
 import { GetContextMenuItems, GridOptions } from 'ag-grid-community';
 import { Observable } from 'rxjs';
-import { select, Store } from '@ngrx/store';
 
 import { AgGridService } from '../../services/ag-grid.service';
 import { defaultData } from './defaultData';
 import { agGridOptionsConfig } from './ag-grid-options-config';
-import { contextMenuItemsSelector } from '../../../store/store.reducers';
+import { HttpService } from '../../services/http.service';
 
 @Component({
   selector: 'app-ag-grid',
   templateUrl: './ag-grid.component.html',
   styleUrls: ['./ag-grid.component.scss'],
-  providers: [AgGridService]
+  providers: [AgGridService, HttpService]
 })
 export class AgGridComponent implements OnInit {
   @Input() isSelection: boolean = true;
@@ -21,14 +20,13 @@ export class AgGridComponent implements OnInit {
   public columnDefs$: Observable<object[]>;
   public rowData$: Observable<object>;
 
-  constructor(private store: Store,
-              @Self() private agGridService: AgGridService) {
+  constructor(@Self() private agGridService: AgGridService,
+              @Self() private httpService: HttpService) {
   }
 
   ngOnInit(): void {
-    this.rowData$ = this.agGridService.getVideosData();
-    this.rowData$.subscribe(data => console.log(data));
-    this.columnDefs$ = this.store.pipe(select(contextMenuItemsSelector));
+    this.rowData$ = this.httpService.getVideosData();
+    this.columnDefs$ = this.agGridService.selectContextMenuItems()
     this.rowData = this.agGridService.getDataForTable(defaultData.items);
   }
 
