@@ -1,8 +1,9 @@
 import { GridOptions } from 'ag-grid-community';
+import 'ag-grid-enterprise'
+
 import { TableImageComponent } from '../table-image/table-image.component';
 import { TableTitleComponent } from '../table-title/table-title.component';
 import { ToolbarPanelComponent } from '../toolbar-panel/toolbar-panel.component';
-import 'ag-grid-enterprise'
 
 export const agGridOptionsConfig: GridOptions = {
   statusBar: {
@@ -30,6 +31,6 @@ export const agGridOptionsConfig: GridOptions = {
     autoHeight: true,
     resizable: true,
   },
-  rowSelection: "multiple",
+  rowSelection: 'multiple',
   rowMultiSelectWithClick: true,
 }

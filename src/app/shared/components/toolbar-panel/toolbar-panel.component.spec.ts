@@ -1,34 +1,34 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ToolbarPanelComponent } from './toolbar-panel.component';
-import { MockStore, provideMockStore } from '@ngrx/store/testing';
+import { AgGridService } from '../../services/ag-grid.service';
 
 describe('ToolbarPanelComponent', () => {
-  let component: ToolbarPanelComponent;
+  let toolbarPanelComponent: ToolbarPanelComponent;
   let fixture: ComponentFixture<ToolbarPanelComponent>;
-  let store: MockStore;
-  const initialState = {isSelection: false};
+  let agGridService: AgGridService;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [],
       providers: [
-        provideMockStore({ initialState }),
+        AgGridService
       ],
       declarations: [ ToolbarPanelComponent ]
     })
     .compileComponents();
 
-    store = TestBed.inject(MockStore);
+    agGridService = TestBed.inject(AgGridService)
+    toolbarPanelComponent = new ToolbarPanelComponent(agGridService)
   });
 
   beforeEach(() => {
     fixture = TestBed.createComponent(ToolbarPanelComponent);
-    component = fixture.componentInstance;
+    toolbarPanelComponent = fixture.componentInstance;
     fixture.detectChanges();
   });
 
   it('should create', () => {
-    expect(component).toBeTruthy();
+    expect(toolbarPanelComponent).toBeTruthy();
   });
 });

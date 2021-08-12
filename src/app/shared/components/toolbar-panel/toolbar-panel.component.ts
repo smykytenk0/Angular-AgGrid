@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { Store } from '@ngrx/store';
-import { StoreActions } from '../../../store/store.actions';
+
 import { columnDefsWithoutSelection, columnDefsWithSelection } from '../../constants/contextMenuItems.constants';
+import { AgGridService } from '../../services/ag-grid.service';
 
 @Component({
   selector: 'app-toolbar-panel',
@@ -9,10 +9,10 @@ import { columnDefsWithoutSelection, columnDefsWithSelection } from '../../const
   styleUrls: ['./toolbar-panel.component.scss']
 })
 export class ToolbarPanelComponent {
-  selection: boolean = false;
-  contextMenuItems: object[] = columnDefsWithSelection;
+  private selection: boolean = false;
+  private contextMenuItems: object[] = columnDefsWithSelection;
 
-  constructor(private store: Store) {
+  constructor(public agGridService: AgGridService) {
   }
 
   agInit() {
@@ -21,6 +21,6 @@ export class ToolbarPanelComponent {
   toggleSelection() {
     this.selection = !this.selection;
     this.contextMenuItems = (this.selection ? columnDefsWithSelection : columnDefsWithoutSelection);
-    this.store.dispatch(StoreActions.toggleSelection({isSelection: this.selection, contextMenuItems: this.contextMenuItems}))
+    this.agGridService.dispatchToggleSelection(this.selection, this.contextMenuItems);
   }
 }

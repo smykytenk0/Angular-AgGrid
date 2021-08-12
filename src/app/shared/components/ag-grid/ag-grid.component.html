@@ -2,7 +2,7 @@
                  class="ag-theme-alpine"
                  [gridOptions]="gridOptions"
                  [rowHeight]="200"
-                 [rowData]="rowData"
+                 [rowData]="rowData$ | async"
                  [columnDefs]="columnDefs$ | async"
                  [getContextMenuItems]="getContextMenuItems">
 </ag-grid-angular>
