@@ -2,9 +2,9 @@ import { Component, Input, OnInit, Self } from '@angular/core';
 import { GetContextMenuItems, GridOptions } from 'ag-grid-community';
 import { Observable, of } from 'rxjs';
 
-import { AgGridService } from '../../services/ag-grid.service';
+import { AgGridService } from '../shared/services/ag-grid.service';
 import { AG_GRID_CONFIG } from './ag-grid-options-config';
-import { HttpService } from '../../services/http.service';
+import { HttpService } from '../shared/services/http.service';
 
 @Component({
   selector: 'app-ag-grid',
@@ -24,7 +24,7 @@ export class AgGridComponent implements OnInit {
 
   ngOnInit(): void {
     this.rowData$ = this.httpService.getVideosData();
-    this.columnDefs$ = this.agGridService.selectContextMenuItems()
+    this.columnDefs$ = this.agGridService.selectContextMenuItems();
   }
 
   getContextMenuItems(params): GetContextMenuItems {
@@ -36,7 +36,7 @@ export class AgGridComponent implements OnInit {
         'paste',
         {
           name: 'Open in new tab',
-          icon: '<img src="../../../../assets/openInNewTab.png" alt="Open in new tab" width="16px" height="16px">',
+          icon: '<img src="../../assets/openInNewTab.png" alt="Open in new tab" width="16px" height="16px">',
           action: () => {
             window.open(`https://www.youtube.com/watch?v=${params.value.id.videoId}`)
           }

@@ -1,11 +1,11 @@
 import { GridOptions } from 'ag-grid-community';
 import 'ag-grid-enterprise'
 
-import { TableImageComponent } from '../table-image/table-image.component';
-import { TableTitleComponent } from '../table-title/table-title.component';
-import { ToolbarPanelComponent } from '../toolbar-panel/toolbar-panel.component';
+import { TableImageComponent } from '../shared/components/table-image/table-image.component';
+import { TableTitleComponent } from '../shared/components/table-title/table-title.component';
+import { ToolbarPanelComponent } from '../shared/components/toolbar-panel/toolbar-panel.component';
 
-export const agGridOptionsConfig: GridOptions = {
+export const AG_GRID_CONFIG: GridOptions = {
   statusBar: {
     statusPanels: [
       {

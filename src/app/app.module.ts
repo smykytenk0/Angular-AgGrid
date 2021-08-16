@@ -10,19 +10,18 @@ import { AgGridModule } from 'ag-grid-angular';
 import { TableImageComponent } from './shared/components/table-image/table-image.component';
 import { TableTitleComponent } from './shared/components/table-title/table-title.component';
 import { ToolbarPanelComponent } from './shared/components/toolbar-panel/toolbar-panel.component';
-import { AgGridComponent } from './shared/components/ag-grid/ag-grid.component';
+import { AgGridComponent } from './ag-grid/ag-grid.component';
 import { environment } from '../environments/environment';
 import { storeReducer } from './store/store.reducers';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    TableImageComponent,
-    TableTitleComponent,
-    ToolbarPanelComponent,
     AgGridComponent
   ],
   imports: [
+    SharedModule,
     BrowserModule,
     AppRoutingModule,
     AgGridModule.withComponents([TableImageComponent, TableTitleComponent, ToolbarPanelComponent]),

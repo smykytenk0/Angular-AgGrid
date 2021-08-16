@@ -6,10 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./table-title.component.scss']
 })
 export class TableTitleComponent {
-  link: string;
-  videoTitle: string
+  public link: string;
+  public videoTitle: string
 
-  agInit(params: any){
+  agInit(params: any): void{
     this.link = `https://www.youtube.com/watch?v=${params.value.id.videoId}`;
     this.videoTitle = params.value.snippet.title;
   }

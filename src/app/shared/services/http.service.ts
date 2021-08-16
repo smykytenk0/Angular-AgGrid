@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { convertToTableData } from '../operators/convertToTableData';
 import { Observable } from 'rxjs';
-import { TableDataInterface } from '../components/ag-grid/TableData.interface';
+import { TableDataInterface } from '../../ag-grid/TableData.interface';
 
 @Injectable()
 export class HttpService {
