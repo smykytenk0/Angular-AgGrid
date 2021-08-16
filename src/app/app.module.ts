@@ -3,10 +3,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { HttpClientModule } from '@angular/common/http';
-
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
 import { AgGridModule } from 'ag-grid-angular';
+import { AppRoutingModule } from './app-routing.module';
+
+import { AppComponent } from './app.component';
 import { TableImageComponent } from './shared/components/table-image/table-image.component';
 import { TableTitleComponent } from './shared/components/table-title/table-title.component';
 import { ToolbarPanelComponent } from './shared/components/toolbar-panel/toolbar-panel.component';

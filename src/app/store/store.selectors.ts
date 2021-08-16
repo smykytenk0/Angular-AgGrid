@@ -1,4 +1,5 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
+
 import { AppState } from './store.interfaces';
 
 export const defaultSelector = createFeatureSelector<AppState>('store');

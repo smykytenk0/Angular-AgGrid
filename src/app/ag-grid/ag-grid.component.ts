@@ -5,6 +5,7 @@ import { Observable, of } from 'rxjs';
 import { AgGridService } from '../shared/services/ag-grid.service';
 import { AG_GRID_CONFIG } from './ag-grid-options-config';
 import { HttpService } from '../shared/services/http.service';
+import { IColumnDef } from '../shared/interfaces/columnDef.interface';
 
 @Component({
   selector: 'app-ag-grid',
@@ -15,7 +16,7 @@ import { HttpService } from '../shared/services/http.service';
 export class AgGridComponent implements OnInit {
   @Input() isSelection: boolean = true;
   public gridOptions: GridOptions = AG_GRID_CONFIG;
-  public columnDefs$: Observable<object[]> = of(null);
+  public columnDefs$: Observable<IColumnDef[]> = of(null);
   public rowData$: Observable<object>;
 
   constructor(@Self() private agGridService: AgGridService,

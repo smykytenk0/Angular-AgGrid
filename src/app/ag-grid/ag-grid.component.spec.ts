@@ -1,9 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { AgGridComponent } from './ag-grid.component';
 import { provideMockStore } from '@ngrx/store/testing';
 import { HttpClient } from '@angular/common/http';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
+
+import { AgGridComponent } from './ag-grid.component';
 import { AgGridService } from '../shared/services/ag-grid.service';
 import { HttpService } from '../shared/services/http.service';
 import {

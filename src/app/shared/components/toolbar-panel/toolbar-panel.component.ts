@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 
 import { columnDefsWithoutSelection, columnDefsWithSelection } from '../../constants/columnDefs.constants';
 import { AgGridService } from '../../services/ag-grid.service';
+import { IColumnDef } from '../../interfaces/columnDef.interface';
 
 @Component({
   selector: 'app-toolbar-panel',
@@ -10,7 +11,7 @@ import { AgGridService } from '../../services/ag-grid.service';
 })
 export class ToolbarPanelComponent {
   public selection: boolean = false;
-  public columnsDefs: object[] = columnDefsWithSelection;
+  public columnsDefs: IColumnDef[] = columnDefsWithSelection;
 
   constructor(public agGridService: AgGridService) {
   }

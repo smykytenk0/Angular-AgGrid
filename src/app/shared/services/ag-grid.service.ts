@@ -4,6 +4,7 @@ import { select, Store } from '@ngrx/store';
 import { StoreActions } from '../../store/store.actions';
 import { Observable } from 'rxjs';
 import { columnsDefsSelector } from '../../store/store.selectors';
+import { IColumnDef } from '../interfaces/columnDef.interface';
 
 @Injectable()
 export class AgGridService {
@@ -11,14 +12,14 @@ export class AgGridService {
   constructor(private store: Store) {
   }
 
-  dispatchToggleSelection(isSelection: boolean, columnsDefs: object[] ): void{
+  dispatchToggleSelection(isSelection: boolean, columnsDefs: IColumnDef[] ): void{
     this.store.dispatch(StoreActions.toggleSelection({
       isSelection: isSelection,
       columnsDefs: columnsDefs
     }))
   }
 
-  selectContextMenuItems(): Observable<object[]>{
+  selectContextMenuItems(): Observable<IColumnDef[]>{
     return this.store.pipe(select(columnsDefsSelector));
   }
 }

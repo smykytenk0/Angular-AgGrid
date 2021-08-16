@@ -1,8 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { MockStore, provideMockStore } from '@ngrx/store/testing';
 
 import { ToolbarPanelComponent } from './toolbar-panel.component';
 import { AgGridService } from '../../services/ag-grid.service';
-import { MockStore, provideMockStore } from '@ngrx/store/testing';
 import { mockRootState } from '../../constants/defaultDataForTesting.constants';
 import { columnDefsWithSelection } from '../../constants/columnDefs.constants';
 

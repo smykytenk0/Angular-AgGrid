@@ -1,6 +1,7 @@
-import { AgGridService } from './ag-grid.service';
 import { MockStore, provideMockStore } from '@ngrx/store/testing';
 import { TestBed } from '@angular/core/testing';
+
+import { AgGridService } from './ag-grid.service';
 import { columnDefsWithoutSelection } from '../constants/columnDefs.constants';
 import { mockRootState } from '../constants/defaultDataForTesting.constants';
 

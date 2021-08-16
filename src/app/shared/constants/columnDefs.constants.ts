@@ -1,4 +1,6 @@
-export const columnDefsWithSelection = [
+import { IColumnDef } from '../interfaces/columnDef.interface';
+
+export const columnDefsWithSelection: IColumnDef[] = [
   {
     headerName: '',
     field: 'filterField',
@@ -13,7 +15,7 @@ export const columnDefsWithSelection = [
   {headerName: 'Description', field: 'description'},
 ];
 
-export const columnDefsWithoutSelection = [
+export const columnDefsWithoutSelection: IColumnDef[] = [
   {headerName: '', field: 'image', cellRenderer: 'tableImageComponent',},
   {headerName: 'Publish on', field: 'publishedAt'},
   {headerName: 'Video Title', field: 'title', cellRenderer: 'tableTitleComponent'},
