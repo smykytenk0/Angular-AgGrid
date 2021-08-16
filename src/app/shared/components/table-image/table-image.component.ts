@@ -7,8 +7,8 @@ import { imageInterface } from './image.interface';
   styleUrls: ['./table-image.component.scss']
 })
 export class TableImageComponent {
-  params: imageInterface;
-  url: string;
+  public params: imageInterface;
+  public url: string;
 
   agInit(params: any) {
     this.url = params.value.url;

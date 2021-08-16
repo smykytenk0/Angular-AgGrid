@@ -15,10 +15,10 @@ export class ToolbarPanelComponent {
   constructor(public agGridService: AgGridService) {
   }
 
-  agInit() {
+  agInit(): void {
   }
 
-  toggleSelection() {
+  toggleSelection(): void {
     this.selection = !this.selection;
     this.columnsDefs = (this.selection ? columnDefsWithSelection : columnDefsWithoutSelection);
     this.agGridService.dispatchToggleSelection(this.selection, this.columnsDefs);

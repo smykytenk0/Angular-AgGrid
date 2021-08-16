@@ -3,7 +3,7 @@ import { GetContextMenuItems, GridOptions } from 'ag-grid-community';
 import { Observable, of } from 'rxjs';
 
 import { AgGridService } from '../../services/ag-grid.service';
-import { agGridOptionsConfig } from './ag-grid-options-config';
+import { AG_GRID_CONFIG } from './ag-grid-options-config';
 import { HttpService } from '../../services/http.service';
 
 @Component({
@@ -14,7 +14,7 @@ import { HttpService } from '../../services/http.service';
 })
 export class AgGridComponent implements OnInit {
   @Input() isSelection: boolean = true;
-  public gridOptions: GridOptions = agGridOptionsConfig;
+  public gridOptions: GridOptions = AG_GRID_CONFIG;
   public columnDefs$: Observable<object[]> = of(null);
   public rowData$: Observable<object>;
 
@@ -26,7 +26,7 @@ export class AgGridComponent implements OnInit {
     this.rowData$ = this.httpService.getVideosData();
     this.columnDefs$ = this.agGridService.selectContextMenuItems()
   }
-  
+
   getContextMenuItems(params): GetContextMenuItems {
     const columnName = params.column.colId;
     return (columnName == 'title' ?
