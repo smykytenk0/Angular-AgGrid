@@ -1,38 +1,24 @@
 import { Injectable } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 
-import { TableDataInterface } from '../interfaces/TableData.interface';
 import { StoreActions } from '../../store/store.actions';
-import { contextMenuItemsSelector } from '../../store/store.reducers';
+import { Observable } from 'rxjs';
+import { columnsDefsSelector } from '../../store/store.selectors';
 
-@Injectable({providedIn: 'root'})
+@Injectable()
 export class AgGridService {
 
   constructor(private store: Store) {
   }
 
-  getDataForTable(data): TableDataInterface[] {
-    let rowData: TableDataInterface[] = [];
-    for (let i of data) {
-      rowData.push({
-        filterField: '',
-        image: i.snippet.thumbnails.default,
-        publishedAt: i.snippet.publishedAt,
-        title: i,
-        description: i.snippet.description
-      })
-    }
-    return rowData
-  };
-
-  dispatchToggleSelection(isSelection: boolean, contextMenuItems: object[] ){
+  dispatchToggleSelection(isSelection: boolean, columnsDefs: object[] ): void{
     this.store.dispatch(StoreActions.toggleSelection({
       isSelection: isSelection,
-      contextMenuItems: contextMenuItems
+      columnsDefs: columnsDefs
     }))
   }
 
-  selectContextMenuItems(){
-    return this.store.pipe(select(contextMenuItemsSelector));
+  selectContextMenuItems(): Observable<object[]>{
+    return this.store.pipe(select(columnsDefsSelector));
   }
 }

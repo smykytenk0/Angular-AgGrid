@@ -12,7 +12,7 @@ import { TableTitleComponent } from './shared/components/table-title/table-title
 import { ToolbarPanelComponent } from './shared/components/toolbar-panel/toolbar-panel.component';
 import { AgGridComponent } from './shared/components/ag-grid/ag-grid.component';
 import { environment } from '../environments/environment';
-import { StoreReducers } from './store/store.reducers';
+import { storeReducer } from './store/store.reducers';
 
 @NgModule({
   declarations: [
@@ -27,7 +27,7 @@ import { StoreReducers } from './store/store.reducers';
     AppRoutingModule,
     AgGridModule.withComponents([TableImageComponent, TableTitleComponent, ToolbarPanelComponent]),
     HttpClientModule,
-    StoreModule.forRoot({storeInterface: StoreReducers}),
+    StoreModule.forRoot({store: storeReducer}),
     !environment.production ? StoreDevtoolsModule.instrument() : []
   ],
   providers: [],

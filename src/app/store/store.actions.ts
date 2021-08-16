@@ -1,7 +1,7 @@
 import { createAction, props } from '@ngrx/store';
 
-const toggleSelection = createAction('[agGrid] isSelection change', props<{isSelection: boolean, contextMenuItems: object[]}>());
+const toggleSelectionAction = createAction('[agGrid] isSelection change', props<{isSelection: boolean, columnsDefs: object[]}>());
 
 export const StoreActions = {
-  toggleSelection
+  toggleSelection: toggleSelectionAction
 }

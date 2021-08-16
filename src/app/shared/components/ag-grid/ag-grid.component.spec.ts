@@ -1,39 +1,42 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AgGridComponent } from './ag-grid.component';
-import { MockStore, provideMockStore } from '@ngrx/store/testing';
+import { provideMockStore } from '@ngrx/store/testing';
 import { HttpClient } from '@angular/common/http';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { AgGridService } from '../../services/ag-grid.service';
 import { HttpService } from '../../services/http.service';
+import {
+  contextMenuItemsForDefaultParams, contextMenuItemsForNonDefaultParams,
+  mockRootState
+} from '../../constants/defaultDataForTesting.constants';
 
 describe('AgGridComponent', () => {
   let agGridComponent: AgGridComponent;
   let fixture: ComponentFixture<AgGridComponent>;
-  let store: MockStore;
-  let http: HttpClient;
   let agGridService: AgGridService;
   let httpService: HttpService;
-  const initialState = {isSelection: false}
+  const initialState = mockRootState;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AgGridComponent ],
+      declarations: [AgGridComponent],
       providers: [
-        provideMockStore({ initialState }),
-        HttpClient
+        provideMockStore({initialState}),
+        HttpClient,
+        AgGridService,
+        HttpService,
+        AgGridComponent
       ],
       imports: [
-        HttpClientTestingModule
+        HttpClientTestingModule,
       ]
     })
-    .compileComponents();
+      .compileComponents();
 
-    http = TestBed.inject(HttpClient);
-    store = TestBed.inject(MockStore);
-    agGridService = new AgGridService(store);
-    httpService = new HttpService(http);
-    agGridComponent = new AgGridComponent(agGridService, httpService);
+    agGridService = TestBed.inject(AgGridService);
+    httpService = TestBed.inject(HttpService);
+    agGridComponent = TestBed.inject(AgGridComponent);
 
   });
 
@@ -46,4 +49,36 @@ describe('AgGridComponent', () => {
   it('should create', () => {
     expect(agGridComponent).toBeTruthy();
   });
+
+  it('getContextMenuItems() should return defaultParams', () => {
+    const spy = spyOn(agGridComponent, 'getContextMenuItems').and.callThrough();
+
+    agGridComponent.getContextMenuItems(contextMenuItemsForDefaultParams);
+
+    expect(spy).toHaveBeenCalledTimes(1);
+
+  })
+
+  it('getContextMenuItems() should return custom params', () => {
+    const spy = spyOn(agGridComponent, 'getContextMenuItems').and.callThrough();
+
+    agGridComponent.getContextMenuItems(contextMenuItemsForNonDefaultParams);
+
+    expect(spy).toHaveBeenCalledTimes(1);
+
+  })
+
+  it('ngOnInit() calls both functions from services getVideosData() and selectContextMenuItems()', () => {
+    agGridComponent.ngOnInit();
+
+    agGridComponent.rowData$.subscribe(data => {
+      expect(data[0].length).toBeGreaterThan(0);
+    })
+
+    agGridComponent.columnDefs$.subscribe(data => {
+      expect(data.length).toBeGreaterThan(0);
+    })
+  });
+  it('')
 });
+

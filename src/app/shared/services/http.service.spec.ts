@@ -5,19 +5,24 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('HttpService', () => {
   let httpService: HttpService;
-  let http: HttpClient;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [HttpClient],
+      providers: [HttpClient, HttpService],
       imports: [HttpClientTestingModule]
     })
-
-    http = TestBed.inject(HttpClient);
-    httpService = new HttpService(http);
+    httpService = TestBed.inject(HttpService);
   })
 
   it('should create', () => {
     expect(httpService).toBeTruthy();
+  })
+
+  it('getVideosData() should work', () => {
+    const spy = spyOn(httpService, 'getVideosData').and.callThrough();
+
+    httpService.getVideosData();
+
+    expect(spy).toHaveBeenCalledTimes(1);
   })
 })

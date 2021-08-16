@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { imageInterface } from '../../interfaces/image.interface';
+import { imageInterface } from './image.interface';
 
 @Component({
   selector: 'app-table-image',

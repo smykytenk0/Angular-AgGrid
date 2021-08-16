@@ -1,21 +1,17 @@
-import { StoreInterface } from '../shared/interfaces/store.interface';
-import { createFeatureSelector, createReducer, createSelector, on } from '@ngrx/store';
+import { createReducer, on } from '@ngrx/store';
 import { StoreActions } from './store.actions';
-import { columnDefsWithoutSelection } from '../shared/constants/contextMenuItems.constants';
+import { columnDefsWithoutSelection } from '../shared/constants/columnDefs.constants';
+import { AppState } from './store.interfaces';
 
-const initialState: StoreInterface = {
+const initialState: AppState = {
   isSelection: false,
-  contextMenuItems: columnDefsWithoutSelection,
+  columnsDefs: columnDefsWithoutSelection,
 }
 
-export const StoreReducers = createReducer(
+export const storeReducer = createReducer(
   initialState,
-  on(StoreActions.toggleSelection, (state, {isSelection, contextMenuItems}) => {
-    return {...state, isSelection: isSelection, contextMenuItems: contextMenuItems}
+  on(StoreActions.toggleSelection, (state, {isSelection, columnsDefs}) => {
+    return {...state, isSelection: isSelection, columnsDefs: columnsDefs}
   })
-
 )
 
-export const defaultSelector = createFeatureSelector<StoreInterface>('storeInterface');
-export const isSelectionSelector = createSelector(defaultSelector, state => state.isSelection);
-export const contextMenuItemsSelector = createSelector(defaultSelector, state => state.contextMenuItems);

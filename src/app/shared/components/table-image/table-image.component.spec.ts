@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TableImageComponent } from './table-image.component';
+import { mockGridParams } from '../../constants/defaultDataForTesting.constants';
 
 describe('TableImageComponent', () => {
   let component: TableImageComponent;
@@ -10,7 +11,6 @@ describe('TableImageComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [ TableImageComponent ]
     })
-    .compileComponents();
   });
 
   beforeEach(() => {
@@ -22,4 +22,10 @@ describe('TableImageComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('agInit() should work and change url', () => {
+    component.agInit(mockGridParams);
+
+    expect(component.url).toEqual(mockGridParams.value.url);
+  })
 });

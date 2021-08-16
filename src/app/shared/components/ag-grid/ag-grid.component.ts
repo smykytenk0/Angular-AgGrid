@@ -1,9 +1,8 @@
 import { Component, Input, OnInit, Self } from '@angular/core';
 import { GetContextMenuItems, GridOptions } from 'ag-grid-community';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 
 import { AgGridService } from '../../services/ag-grid.service';
-import { defaultData } from './defaultData';
 import { agGridOptionsConfig } from './ag-grid-options-config';
 import { HttpService } from '../../services/http.service';
 
@@ -16,8 +15,7 @@ import { HttpService } from '../../services/http.service';
 export class AgGridComponent implements OnInit {
   @Input() isSelection: boolean = true;
   public gridOptions: GridOptions = agGridOptionsConfig;
-  public rowData: object[] = [];
-  public columnDefs$: Observable<object[]>;
+  public columnDefs$: Observable<object[]> = of(null);
   public rowData$: Observable<object>;
 
   constructor(@Self() private agGridService: AgGridService,
@@ -27,9 +25,8 @@ export class AgGridComponent implements OnInit {
   ngOnInit(): void {
     this.rowData$ = this.httpService.getVideosData();
     this.columnDefs$ = this.agGridService.selectContextMenuItems()
-    this.rowData = this.agGridService.getDataForTable(defaultData.items);
   }
-
+  
   getContextMenuItems(params): GetContextMenuItems {
     const columnName = params.column.colId;
     return (columnName == 'title' ?
