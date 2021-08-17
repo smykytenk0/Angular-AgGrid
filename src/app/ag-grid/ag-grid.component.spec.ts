@@ -7,9 +7,10 @@ import { AgGridComponent } from './ag-grid.component';
 import { AgGridService } from '../shared/services/ag-grid.service';
 import { HttpService } from '../shared/services/http.service';
 import {
-  contextMenuItemsForDefaultParams, contextMenuItemsForNonDefaultParams,
+  contextMenuItemsForDefaultParams,
+  contextMenuItemsForNonDefaultParams,
   mockRootState
-} from '../shared/constants/defaultDataForTesting.constants';
+} from '../shared/constants/defaultDataForTesting.config';
 
 describe('AgGridComponent', () => {
   let agGridComponent: AgGridComponent;

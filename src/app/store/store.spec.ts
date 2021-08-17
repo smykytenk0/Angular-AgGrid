@@ -1,4 +1,4 @@
-import { mockInitialState, mockRootState } from '../shared/constants/defaultDataForTesting.constants';
+import { mockInitialState } from '../shared/constants/defaultDataForTesting.config';
 import { StoreActions } from './store.actions';
 import { columnDefsWithoutSelection } from '../shared/constants/columnDefs.constants';
 import { storeReducer } from './store.reducers';

@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TableImageComponent } from './table-image.component';
-import { mockGridParams } from '../../constants/defaultDataForTesting.constants';
+import { mockGridParams } from '../../constants/defaultDataForTesting.config';
 
 describe('TableImageComponent', () => {
   let component: TableImageComponent;

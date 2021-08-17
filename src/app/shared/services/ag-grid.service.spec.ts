@@ -3,7 +3,7 @@ import { TestBed } from '@angular/core/testing';
 
 import { AgGridService } from './ag-grid.service';
 import { columnDefsWithoutSelection } from '../constants/columnDefs.constants';
-import { mockRootState } from '../constants/defaultDataForTesting.constants';
+import { mockRootState } from '../constants/defaultDataForTesting.config';
 
 describe('AgGridService', () => {
   let agGridService: AgGridService;

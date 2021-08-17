@@ -24,6 +24,12 @@ There is context menu provided for "Video title column".
 That's my coverage for tests.
 ![alt text](src/assets/Screenshot.jpg)
 
+## Description of the requirements
+
+1. Service with @Self decorator (There are two such services: http.service.ts and ag-grid.service.ts. They are in the shared/services and they are using in ag-grid component). 
+2. Store (ngrx or another implementation of Redux). (I've used ngrx, and it's store in my test task. All the files contains in store folder).
+3. Custom rxjs pipe/operator. (I used async pipe in the ag-grid component, I did operator, that contains in shared/operators as well)
+4. Pure (simple, dump or input/output) component covered by unit test. (All the ts files covered by unit test, that was shown higher).
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.1.4.
 

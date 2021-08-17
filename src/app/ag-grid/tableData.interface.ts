@@ -1,4 +1,4 @@
-export interface TableDataInterface{
+export interface TableDataInterface {
   filterField: string,
   image: string,
   publishedAt: string

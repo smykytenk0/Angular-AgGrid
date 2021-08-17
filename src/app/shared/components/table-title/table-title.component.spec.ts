@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TableTitleComponent } from './table-title.component';
-import { mockGridParams } from '../../constants/defaultDataForTesting.constants';
+import { mockGridParams } from '../../constants/defaultDataForTesting.config';
 
 describe('TableTitleComponent', () => {
   let component: TableTitleComponent;

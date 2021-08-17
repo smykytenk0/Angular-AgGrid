@@ -3,7 +3,7 @@ import { MockStore, provideMockStore } from '@ngrx/store/testing';
 
 import { ToolbarPanelComponent } from './toolbar-panel.component';
 import { AgGridService } from '../../services/ag-grid.service';
-import { mockRootState } from '../../constants/defaultDataForTesting.constants';
+import { mockRootState } from '../../constants/defaultDataForTesting.config';
 import { columnDefsWithSelection } from '../../constants/columnDefs.constants';
 
 describe('ToolbarPanelComponent', () => {

@@ -28,7 +28,7 @@ export class AgGridComponent implements OnInit {
     this.columnDefs$ = this.agGridService.selectContextMenuItems();
   }
 
-  getContextMenuItems(params): GetContextMenuItems {
+  public getContextMenuItems(params): GetContextMenuItems {
     const columnName = params.column.colId;
     return (columnName == 'title' ?
       [

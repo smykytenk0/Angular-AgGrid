@@ -1,4 +1,5 @@
 import { createReducer, on } from '@ngrx/store';
+
 import { StoreActions } from './store.actions';
 import { columnDefsWithoutSelection } from '../shared/constants/columnDefs.constants';
 import { AppState } from './store.interfaces';

@@ -119,6 +119,7 @@
   },
   "defaultProject": "agGrid",
   "cli": {
+    "analytics": "7d79986a-cb24-4236-82da-e311ccec2738",
     "defaultCollection": "@angular-eslint/schematics"
   }
 }

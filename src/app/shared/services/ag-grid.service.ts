@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { select, Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
 
 import { StoreActions } from '../../store/store.actions';
-import { Observable } from 'rxjs';
 import { columnsDefsSelector } from '../../store/store.selectors';
 import { IColumnDef } from '../interfaces/columnDef.interface';
 
